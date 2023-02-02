@@ -34,3 +34,7 @@ datasheets/*
 
 # Gerber File Exports
 gerber/*
+
+#ERC/DRC Outputs
+*-erc.txt
+*-drc.txt

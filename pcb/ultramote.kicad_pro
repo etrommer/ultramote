@@ -467,5 +467,8 @@
       "GPIO"
     ]
   ],
-  "text_variables": {}
+  "text_variables": {
+    "date": "2023-02-02",
+    "version": "ffa2e16"
+  }
 }
