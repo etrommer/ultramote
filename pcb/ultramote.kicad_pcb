@@ -651,7 +651,7 @@
       (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 2e2b3908-75c3-4909-bb3d-7cebf6e9dc7b)
     )
-    (pad "" np_thru_hole circle (at 3.77 1.27 45) (size 2.2 2.2) (drill 2.2) (layers F&B.Cu *.Mask) (tstamp 27043754-961c-418c-995a-fdd197f80819))
+    (pad "" np_thru_hole circle (at 3.77 1.27 45) (size 2.6 2.6) (drill 2.6) (layers F&B.Cu *.Mask) (tstamp 27043754-961c-418c-995a-fdd197f80819))
     (pad "" np_thru_hole circle (at -2.5 -1.27 45) (size 2.2 2.2) (drill 2.2) (layers F&B.Cu *.Mask) (tstamp cb38961b-e334-4492-99b1-568cb9861c9b))
     (pad "1" thru_hole circle (at 2.54 -1.27 45) (size 1.85 1.85) (drill 1.5) (layers *.Cu *.Mask)
       (net 31 "/nRST") (pinfunction "Pin_1") (pintype "passive") (tstamp ac679743-87da-4384-92f8-467547edf271))
