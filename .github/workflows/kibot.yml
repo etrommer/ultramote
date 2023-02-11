@@ -30,16 +30,16 @@ jobs:
       uses: INTI-CMNB/KiBot@v2_k6
       with:
         config: pcb/config.kibot.yaml
+        skip: all
         schema: 'pcb/ultramote.kicad_sch'
         board: 'pcb/ultramote.kicad_pcb'
-        dir: kibot_generated
+        dir: website/static/kibot_generated
         cache3D: YES
         targets: ibom.html bom.csv board.pdf schematic.pdf model.step top_render bottom_render
-    - name: Install rsync
-      run: |
-        apt-get update && apt-get install -y rsync
-    - name: Deploy to Github Pages
-      uses: JamesIves/github-pages-deploy-action@v4
+    - name: Commit updated documentation
+      uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        folder: kibot_generated
-        target-folder: kibot_generated
+        file_pattern: website/static/kibot_generated/*
+        branch: website
+        commit_message: "CI: Update documentation"
+        skip_dirty_check: true
