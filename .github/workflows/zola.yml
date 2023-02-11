@@ -1,3 +1,4 @@
+name: Zola Build and Publish
 on: 
  push:
   branches:
