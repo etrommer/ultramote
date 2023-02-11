@@ -25,16 +25,6 @@ fp-info-cache
 *.dsn
 *.ses
 
-# Exported BOM files
+#KiBot Outputs
+generated/*
 *.xml
-*.csv
-
-# Datasheets
-datasheets/*
-
-# Gerber File Exports
-gerber/*
-
-#ERC/DRC Outputs
-*-erc.txt
-*-drc.txt

@@ -1,0 +1,8 @@
+outputs:
+  - name: model.step
+    comment: STEP model
+    type: step
+    options:
+      metric_units: true
+      download: true
+      output: '%f.%x'

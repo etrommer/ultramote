@@ -1,0 +1,23 @@
+outputs:
+  - name: 'schematic.pdf'
+    comment: Schematic (PDF)
+    type: pdf_sch_print
+    dir: docs
+    options:
+      output: '%f-%i.%x'
+
+  - name: 'board.pdf'
+    comment: PCB (PDF)
+    type: pdf_pcb_print
+    dir: docs
+    layers: 
+      - F.Cu
+      - B.Cu
+      - F.Silkscreen
+      - B.Silkscreen
+      - Edge.Cuts
+    options:
+      plot_sheet_reference: False
+      scaling: 0
+      separated: True
+      output: '%f-pcb-layers.%x'

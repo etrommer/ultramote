@@ -1,0 +1,5 @@
+outputs:
+  - name: 'datasheets'
+    comment: "Downloading Datasheets"
+    type: download_datasheets
+    dir: docs/datasheets

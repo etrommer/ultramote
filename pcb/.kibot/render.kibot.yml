@@ -1,0 +1,26 @@
+outputs:
+  - name: top_render
+    comment: '3D View top'
+    type: 'render_3d'
+    dir: 'docs/img'
+    options:
+      download: true
+      rotate_x: 4
+      rotate_z: 4
+      zoom: 1
+      output: '%f-top.%x'
+      ray_tracing: true
+      view: top
+
+  - name: bottom_render
+    comment: '3D View bottom'
+    type: 'render_3d'
+    dir: 'docs/img'
+    options:
+      download: true
+      rotate_x: 4
+      rotate_z: 4
+      zoom: 1
+      output: '%f-bottom.%x'
+      ray_tracing: true
+      view: bottom
