@@ -15,13 +15,16 @@ Ultramote is a stand-alone device that comes with:
 - USB-C for charging and remote control via a PC
 - Enclosure Options: Aluminium Extrusion or 3D-printed
 
-## Schematics
+## Documentation
+- [Schematic PDF](kibot_generated/docs/ultramote-schematic.pdf)
+- [Board Layot PDF](kibot_generated/docs/ultramote-pcb-layers.pdf)
+- [CSV BoM](kibot_generated/docs/bom/bom_ultramote.csv)
+- [Interactive BoM](kibot_generated/docs/bom/ultramote-ibom.html) (exported using the [KiCAD IBoM Plugin](https://github.com/openscopeproject/InteractiveHtmlBom))
 
-## PCB Layout
-
-## CAD Model
-
-## Board Rendering
+## 3D Board Rendering
+![Rendering Top](kibot_generated/docs/img/ultramote-top.png)
+![Rendering Bottom](kibot_generated/docs/img/ultramote-bottom.png)
 
 # Firmware
+work in progress
 
