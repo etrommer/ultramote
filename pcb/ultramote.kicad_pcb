@@ -79,8 +79,8 @@
     )
   )
 
-  (property "date" "2023-02-02")
-  (property "version" "7b6e693")
+  (property "date" "2023-02-11")
+  (property "version" "bb18080")
 
   (net 0 "")
   (net 1 "+3V3")
@@ -154,12 +154,12 @@
     (property "Sheetfile" "power.kicad_sch")
     (property "Sheetname" "power")
     (path "/a94f32ff-7dd8-43e8-b716-e2ddbd1741de/c13e6233-39b8-4fd0-bc00-93b6f28f14d5")
-    (attr through_hole)
-    (fp_text reference "B1" (at 0 -14) (layer "Dwgs.User")
+    (attr board_only)
+    (fp_text reference "B1" (at 0 -14) (layer "Dwgs.User") hide
       (effects (font (size 1 1) (thickness 0.15)))
       (tstamp a544eb0a-75db-4baf-bf54-9ca21744343b)
     )
-    (fp_text value "Battery" (at 0 -0.5) (layer "F.Fab")
+    (fp_text value "Battery" (at 0 -0.5) (layer "F.Fab") hide
       (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 1a6d2848-e78e-49fe-8978-e1890f07836f)
     )
