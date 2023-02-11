@@ -55,7 +55,10 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        "silk_over_copper|133030000|84418938|bd4443c8-ee4a-4670-8c44-65045aa9c481|9c83573d-1130-4b3b-b183-c970d46885cf",
+        "silk_over_copper|133030000|93578938|bd4443c8-ee4a-4670-8c44-65045aa9c481|91b5df65-1907-4cab-96b4-0b0e107ce55c"
+      ],
       "meta": {
         "filename": "board_design_settings.json",
         "version": 2
@@ -86,7 +89,7 @@
         "padstack": "error",
         "pth_inside_courtyard": "ignore",
         "shorting_items": "error",
-        "silk_over_copper": "warning",
+        "silk_over_copper": "ignore",
         "silk_overlap": "warning",
         "skew_out_of_range": "error",
         "through_hole_pad_without_hole": "error",
@@ -406,7 +409,7 @@
       "idf": "",
       "netlist": "ultramote.net",
       "specctra_dsn": "",
-      "step": "",
+      "step": "ultramote.step",
       "vrml": ""
     },
     "page_layout_descr_file": ""
@@ -469,6 +472,6 @@
   ],
   "text_variables": {
     "date": "2023-02-02",
-    "version": "ffa2e16"
+    "version": "7b6e693"
   }
 }
