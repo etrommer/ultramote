@@ -36,15 +36,9 @@ jobs:
         dir: website/static/kibot_generated
         cache3D: YES
         targets: ibom.html bom.csv board.pdf schematic.pdf model.step top_render bottom_render
-    - name: Change branch
-      run: |
-        git stash
-        git checkout website
-        git stash pop
     - name: Commit updated documentation
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
         file_pattern: website/static/kibot_generated/*
-        branch: website
         commit_message: "CI: Update documentation"
         skip_dirty_check: true

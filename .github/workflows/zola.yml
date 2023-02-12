@@ -1,8 +1,12 @@
 name: Zola Build and Publish
 on: 
- push:
-  branches:
-   - website
+  push:
+    paths:
+      - 'website/*'
+  workflow_run:
+    workflows: ['KiBot Export']
+    types:
+      - completed
 
 jobs:
   build:
