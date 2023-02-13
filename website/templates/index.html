@@ -7,9 +7,9 @@
     <title>{% block title %}{{ config.title }}{% endblock title %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% include "_variables.html" %}
-    <link href="fonts/kanit.css" rel="stylesheet">
-    <link href="fonts/fira_sans.css" rel="stylesheet">
-    <link rel="stylesheet" href="/normalize.css">
+    <link href="{{ get_url(path="kanit.css") }}" rel="stylesheet">
+    <link href="{{ get_url(path="fira_sans.css") }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ get_url(path="normalize.css") }}">
     <link rel="stylesheet" href="{{ get_url(path="juice.css") }}">
     <link rel="icon" href="{{ get_url(path="favicon.svg") }}">
     {% block head %}
