@@ -1,0 +1,46 @@
+Row,Description,Part,References,Value,Footprint,Quantity Per PCB,Status,Datasheet,LCSC Part Number,Manufacturer Part Number
+1,,Battery,B1,Battery,lipo403030_300mah,1, ,~,,
+2,Unpolarized capacitor,C,C2 C3 C4 C5 C11 C12 C13 C14,0.1u,C_0603_1608Metric,8, ,~,C570192,CL10B104KB8SNNC
+3,Unpolarized capacitor,C,C6 C7,1u,C_0603_1608Metric,2, ,~,C29936,CL10B105KA8NNNC
+4,Unpolarized capacitor,C,C1 C8 C9 C10,4.7u,C_0603_1608Metric,4, ,~,C913907,CL10A475MA8NQNC
+5,"RGB LED, red/green/blue/anode",LED_RGBA,D4,19-237/R6GHBHC-A07/2T,19-237-R6GHBHC-A01-2T,1, ,https://datasheet.lcsc.com/lcsc/1811061026_Everlight-Elec-19-237-R6GHBHC-A07-2T_C264511.pdf,C264511,19-237/R6GHBHC-A07/2T
+6,schottky barrier diode,BAT54S,D3 D5,BAT54S,SOT-23,2, ,https://www.diodes.com/assets/Datasheets/ds11005.pdf,C408389,BAT54S
+7,"Dual LED, cathodes on pins 3 and 4",LED_Dual_AAKK,D1,LTST-C195KGJRKT,LTST-C195KGJRKT,1, ,https://datasheet.lcsc.com/lcsc/1811100910_Lite-On-LTST-C195KGJRKT_C125104.pdf,C125104,LTST-C195KGJRKT
+8,"TVS Diode Array, 5.5V Standoff, 3 Channels, SOT-143 package",SP0503BAHT,D2,SP0503BAHTG,SOT-143,1, ,http://www.littelfuse.com/~/media/files/littelfuse/technical%20resources/documents/data%20sheets/sp05xxba.pdf,C2682275,TPSP0503BAHTG
+9,Ferrite bead,FerriteBead,FB1,MMZ1608B601CTAH0,C_0603_1608Metric,1, ,~,C97120,MMZ1608B601CTAH0
+10,"Audio Jack, 2 Poles (Mono / TS), Grounded Sleeve, Switched Pole (Normalling)",AudioJack2_Ground_Switch,J6 J7,PJ-242D-SMT,PJ-242D-SMT,2, ,https://datasheet.lcsc.com/lcsc/2110151630_XKB-Connectivity-PJ-242D-SMT_C381133.pdf,C381133,PJ-242D-SMT
+11,"Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)",Conn_01x02,J2,SM02B-SRSS-TB,JST_SH_SM02B-SRSS-TB_1x02-1MP_P1.00mm_Horizontal,1, ,https://datasheet.lcsc.com/lcsc/1811151533_JST-Sales-America-SM02B-SRSS-TB-LF-SN_C160402.pdf,C160402,S2B-PH-SM4-TB(LF)(SN)
+12,"coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, LEMO, ...)",Conn_Coaxial,J1,U.FL-R-SMT-1,U.FL_Hirose_U.FL-R-SMT-1_Vertical,1, ,https://datasheet.lcsc.com/lcsc/1811091710_HRS-Hirose-U-FL-R-SMT-1-80_C88374.pdf,C88374,U.FL-R-SMT-1(80)
+13,USB 2.0-only Type-C Receptacle connector,USB_C_Receptacle_USB2.0,J3,USB-C-XKB_U262-16XN,USB_C_Receptacle_XKB_U262-16XN-4BVC11,1, ,https://datasheet.lcsc.com/lcsc/2103051833_Jing-Extension-of-the-Electronic-Co--918-418K2023S40001_C167321.pdf,C167321,918-418K2023S40001
+14,"Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)",Conn_01x04,J5,WST-REDFIT-4P,WR_WST-REDFIT-4P_DEBUG,1, ,https://www.we-online.com/components/products/datasheet/490107670412.pdf,,
+15,"0.115A Id, 60V Vds, N-Channel MOSFET, SOT-23",2N7002,Q1,2N7002,SOT-23,1, ,https://www.onsemi.com/pub/Collateral/NDS7002A-D.PDF,C916396,2N7002
+16,"-0.13A Id, -50V Vds, P-Channel MOSFET, SOT-23",BSS84,Q2,BSS84,SOT-23,1, ,http://assets.nexperia.com/documents/data-sheet/BSS84.pdf,C668883,BSS84A-TP
+17,Resistor,R,R6 R10 R11 R13 R14 R15 R16,220,R_0603_1608Metric,7, ,~,C22962,0603WAF2200T5E
+18,Resistor,R,R4 R9 R12,1k,R_0603_1608Metric,3, ,~,C21190,0603WAF1001T5E
+19,Resistor,R,R5,3.3k,R_0603_1608Metric,1, ,~,C22978,0603WAF3301T5E
+20,Resistor,R,R2 R7 R8,5.1k,R_0603_1608Metric,3, ,~,C23186,0603WAF5101T5E
+21,Resistor,R,R1 R3,10k,R_0603_1608Metric,2, ,~,C25804,0603WAF1002T5E
+22,"Switch, single pole double throw",SW_SPDT,SW1,SSSS211603,SSSS211603,1, ,https://datasheet.lcsc.com/lcsc/1805291752_ALPSALPINE-SSSS211603_C125040.pdf,C125040,SSSS211603
+23,,CH340N,U5,CH340N,SOP-8_3.9x4.9mm_P1.27mm,1, ,https://datasheet.lcsc.com/lcsc/2202231130_WCH-Jiangsu-Qin-Heng-CH340N_C2977777.pdf,C2977777,CH340N
+24,,EL357,U6 U7,EL357,EL357N-G,2, ,https://datasheet.lcsc.com/lcsc/1809192312_Everlight-Elec-EL357N-B-TA-G_C6649.pdf,C6649,EL357N(B)(TA)-G
+25,,LoRa-E5,U1,LoRa-E5,LoRa-E5,1, ,https://files.seeedstudio.com/products/317990687/res/LoRa-E5%20module%20datasheet_V1.0.pdf,,
+26,"Single cell, Li-Ion/Li-Po charge management controller, 4.50V, Tri-State Status Output, in SOT23-5 package",MCP73831-5-OT,U3,MCP73831-5-OT,SOT-23-5,1, ,http://ww1.microchip.com/downloads/en/DeviceDoc/20001984g.pdf,C424093,MCP73831T-2ACI/OT
+27,"300mA Low Dropout Voltage Regulator, Fixed Output 3.3V, SOT-23-5",TLV70233_SOT23-5,U4,TLV70233DBVT,SOT-23-5,1, ,http://www.ti.com/lit/ds/symlink/tlv702.pdf,C110287,TLV70233DBVT
+28,,TPS2112A,U2,TPS2112APW,TSSOP-8_4.4x3mm_P0.65mm,1, ,https://www.ti.com/lit/ds/symlink/tps2113a.pdf?ts=1675422974516&ref_url=https%253A%252F%252Fwww.google.com%252F,C1524008,TPS2112APW
+
+
+
+
+
+Project info:
+Schematic:,ultramote
+Variant:,default
+Revision:,v0.2
+Date:,2022-05-03
+KiCad Version:,6.0.10+dfsg-1~bpo11+1
+Statistics:
+Component Groups:,28
+Component Count:,53
+Fitted Components:,53
+Number of PCBs:,1
+Total Components:,53
