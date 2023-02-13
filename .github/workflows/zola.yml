@@ -2,7 +2,7 @@ name: Zola Build and Publish
 on: 
   push:
     paths:
-      - 'website/*'
+      - 'website/**'
   workflow_run:
     workflows: ['KiBot Export']
     types:
