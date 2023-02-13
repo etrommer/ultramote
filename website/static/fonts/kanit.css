@@ -4,7 +4,7 @@
   font-family: 'Kanit';
   font-style: normal;
   font-weight: 500;
-  src: url('fonts/kanit-v12-latin-500.woff') format('woff');
+  src: url('kanit-v12-latin-500.woff') format('woff');
 }
 
 /* kanit-600 - latin */
@@ -13,7 +13,7 @@
   font-family: 'Kanit';
   font-style: normal;
   font-weight: 600;
-  src: url('fonts/kanit-v12-latin-600.woff') format('woff');
+  src: url('kanit-v12-latin-600.woff') format('woff');
 }
 
 /* kanit-800 - latin */
@@ -22,6 +22,6 @@
   font-family: 'Kanit';
   font-style: normal;
   font-weight: 800;
-  src: url('fonts/kanit-v12-latin-800.woff') format('woff');
+  src: url('kanit-v12-latin-800.woff') format('woff');
 }
 
