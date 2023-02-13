@@ -5,5 +5,5 @@
   font-family: 'Fira Sans';
   font-style: normal;
   font-weight: 400;
-  src: url('../fonts/fira-sans-v16-latin-regular.woff') format('woff');
+  src: url('fonts/fira-sans-v16-latin-regular.woff') format('woff');
 }
