@@ -6,8 +6,8 @@
 
   (paper "A4")
   (title_block
-    (date "2023-02-12")
-    (rev "0.2a")
+    (date "2023-05-21")
+    (rev "0.2b")
   )
 
   (layers
@@ -888,10 +888,10 @@
       (net 2 "GND") (pinfunction "Pin_2") (pintype "passive") (tstamp 568a3830-4b8c-404e-b4ac-c218b83aeabc))
     (pad "MP" smd roundrect (at -1.8 1.875 90) (size 1.2 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.208333) (tstamp 6b767ef5-8150-4bfa-af43-294d6049a370))
     (pad "MP" smd roundrect (at 1.8 1.875 90) (size 1.2 1.8) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.208333) (tstamp 7cf02365-5f29-4468-9f8f-87249d78363e))
-    (model "${KICAD6_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_SM02B-SRSS-TB_1x02-1MP_P1.00mm_Horizontal.wrl"
-      (offset (xyz 0 0 0))
+    (model "${KIPRJMOD}/cad_models/SM02B-SRSS-TB.STEP"
+      (offset (xyz 0 1.5 -0.25))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz -90 0 0))
     )
   )
 
@@ -2080,7 +2080,7 @@
     (property "ki_keywords" "cap capacitor")
     (path "/168e6a28-0e03-4606-8c7b-f849efe47418/e5e6716b-940a-427b-bfd3-a773fbb280b9")
     (attr smd)
-    (fp_text reference "C12" (at -2.735 -0.125 90) (layer "B.SilkS")
+    (fp_text reference "C12" (at 0 1.5 90) (layer "B.SilkS")
         (effects (font (size 0.8 0.8) (thickness 0.1)) (justify mirror))
       (tstamp 3b479aab-8471-45a9-9b28-c7f3e0211970)
     )
@@ -3160,10 +3160,10 @@
       (net 47 "/USB/MCU_UART_TX") (pinfunction "RXD") (pintype "input") (tstamp af6bef6d-67a4-4903-ba10-488904bedd69))
     (pad "8" smd roundrect (at 2.625 1.905 90) (size 1.65 0.6) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.25)
       (net 12 "Net-(U5-V3)") (pinfunction "V3") (pintype "passive") (tstamp 0daea9ee-cb14-4603-a812-318a2865ab6e))
-    (model "${KICAD6_3DMODEL_DIR}/Package_SO.3dshapes/SOP-8_3.9x4.9mm_P1.27mm.wrl"
-      (offset (xyz 0 0 0))
+    (model "${KIPRJMOD}/cad_models/sop8.STEP"
+      (offset (xyz 0 0 1.5))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz -90 0 90))
     )
   )
 
@@ -5614,6 +5614,9 @@
     (stroke (width 0.05) (type solid)) (layer "Edge.Cuts") (tstamp f0f4c46e-fdd2-4be1-a5d6-83be3f4153db))
   (gr_arc (start 87.5 59.5) (mid 88.232233 57.732233) (end 90 57)
     (stroke (width 0.05) (type solid)) (layer "Edge.Cuts") (tstamp fb61482d-fbcc-4627-99a4-98ad75600d8d))
+  (gr_text "ULTRAMOTE\n${REVISION}" (at 118.25 74.5) (layer "B.SilkS") (tstamp a9f6bc2b-d0d6-412f-8572-22cd10522a93)
+    (effects (font (size 1 1) (thickness 0.15)) (justify left bottom mirror))
+  )
   (gr_text "JLCJLCJLCJLC" (at 102.5 98.5) (layer "F.SilkS") (tstamp 02ba0fc2-e60f-46db-aeca-1fdb515761f6)
     (effects (font (size 1 1) (thickness 0.15)))
   )
