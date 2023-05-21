@@ -84,8 +84,8 @@
     )
   )
 
-  (property "date" "2023-02-11")
-  (property "version" "bb18080")
+  (property "date" "2023-02-12")
+  (property "version" "0d24bdc")
 
   (net 0 "")
   (net 1 "+3V3")
@@ -327,11 +327,6 @@
       (net 29 "unconnected-(J3-SHIELD-PadS3)") (pinfunction "SHIELD") (pintype "passive+no_connect") (tstamp cb09dea9-0798-4d2d-8566-91cee17dd730))
     (pad "S4" thru_hole oval (at 4.32 -3.105 90) (size 1 2.1) (drill oval 0.6 1.7) (layers "*.Cu" "*.Mask")
       (net 33 "unconnected-(J3-SHIELD-PadS4)") (pinfunction "SHIELD") (pintype "passive+no_connect") (tstamp 940960de-be29-4612-97f9-e994995e44b7))
-    (model "${KICAD6_3DMODEL_DIR}/Connector_USB.3dshapes/USB_C_Receptacle_XKB_U262-16XN-4BVC11.wrl"
-      (offset (xyz 0 0 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
     (model "${KIPRJMOD}/cad_models/USB-C.step"
       (offset (xyz -4.5 -3.75 0))
       (scale (xyz 1 1 1))
