@@ -4,6 +4,11 @@
 
   (paper "A4")
 
+  (title_block
+    (date "2023-06-19")
+    (rev "v0.3")
+  )
+
   (lib_symbols
     (symbol "Connector:AudioJack2_Ground_Switch" (in_bom yes) (on_board yes)
       (property "Reference" "J" (at 0 11.43 0)
@@ -809,6 +814,46 @@
         )
       )
     )
+    (symbol "power:GNDA" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
+      (property "Reference" "#PWR" (at 0 -6.35 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Value" "GNDA" (at 0 -3.81 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datasheet" "" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_keywords" "global power" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_description" "Power symbol creates a global label with name \"GNDA\" , analog ground" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "GNDA_0_1"
+        (polyline
+          (pts
+            (xy 0 0)
+            (xy 0 -1.27)
+            (xy 1.27 -1.27)
+            (xy 0 -2.54)
+            (xy -1.27 -1.27)
+            (xy 0 -1.27)
+          )
+          (stroke (width 0) (type default))
+          (fill (type none))
+        )
+      )
+      (symbol "GNDA_1_1"
+        (pin power_in line (at 0 0 270) (length 0) hide
+          (name "GNDA" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
     (symbol "ultramote:EL357" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (at 0 5.08 0)
         (effects (font (size 1.27 1.27)))
@@ -1363,13 +1408,13 @@
     )
   )
 
-  (symbol (lib_id "power:GND") (at 63.5 154.94 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 1def72b9-cc61-4c99-9585-2f2096aaa6a6)
-    (property "Reference" "#PWR044" (at 63.5 161.29 0)
+  (symbol (lib_id "power:GNDA") (at 63.5 154.94 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 2795f01d-a20c-4b11-a78f-871a70b6039c)
+    (property "Reference" "#PWR045" (at 63.5 161.29 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "GND" (at 63.627 159.3342 0)
+    (property "Value" "GNDA" (at 63.5 160.02 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Footprint" "" (at 63.5 154.94 0)
@@ -1378,11 +1423,11 @@
     (property "Datasheet" "" (at 63.5 154.94 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid f5bea857-5c21-4be4-977f-2c28d2b566d8))
+    (pin "1" (uuid ef451320-9271-4127-b055-05196dcc8f89))
     (instances
       (project "ultramote"
         (path "/d9165d03-bf8e-4912-9bca-224da4ea4a29/43fad132-fb74-49a6-968f-ee47e7e9e12e"
-          (reference "#PWR044") (unit 1)
+          (reference "#PWR045") (unit 1)
         )
       )
     )
@@ -1612,31 +1657,6 @@
     )
   )
 
-  (symbol (lib_id "power:GND") (at 52.07 168.91 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 58526528-b40d-443e-a4eb-116157cb0913)
-    (property "Reference" "#PWR043" (at 52.07 175.26 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 52.197 173.3042 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 52.07 168.91 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 52.07 168.91 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 23e66b71-295c-4a06-9f96-2785eca82f56))
-    (instances
-      (project "ultramote"
-        (path "/d9165d03-bf8e-4912-9bca-224da4ea4a29/43fad132-fb74-49a6-968f-ee47e7e9e12e"
-          (reference "#PWR043") (unit 1)
-        )
-      )
-    )
-  )
-
   (symbol (lib_id "Device:R") (at 254 123.19 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 757bb972-82a7-4faf-b012-4496961f8e99)
@@ -1696,6 +1716,31 @@
       (project "ultramote"
         (path "/d9165d03-bf8e-4912-9bca-224da4ea4a29/43fad132-fb74-49a6-968f-ee47e7e9e12e"
           (reference "R10") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:GNDA") (at 63.5 168.91 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 8c562744-28a8-44e4-8862-41800f2d87d0)
+    (property "Reference" "#PWR043" (at 63.5 175.26 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GNDA" (at 63.5 173.99 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 63.5 168.91 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 63.5 168.91 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 24505eb1-6be6-4bf5-a75c-e4c2a23e875a))
+    (instances
+      (project "ultramote"
+        (path "/d9165d03-bf8e-4912-9bca-224da4ea4a29/43fad132-fb74-49a6-968f-ee47e7e9e12e"
+          (reference "#PWR043") (unit 1)
         )
       )
     )
@@ -1847,31 +1892,6 @@
     )
   )
 
-  (symbol (lib_id "power:GND") (at 63.5 168.91 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid bac7badd-5c47-4fa1-963e-ebebdc960309)
-    (property "Reference" "#PWR045" (at 63.5 175.26 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 63.627 173.3042 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 63.5 168.91 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 63.5 168.91 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 846ee250-ae1f-4a96-a7ae-1c7875cdf657))
-    (instances
-      (project "ultramote"
-        (path "/d9165d03-bf8e-4912-9bca-224da4ea4a29/43fad132-fb74-49a6-968f-ee47e7e9e12e"
-          (reference "#PWR045") (unit 1)
-        )
-      )
-    )
-  )
-
   (symbol (lib_id "power:+3V3") (at 96.52 146.05 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid bb2aafe4-130f-48e4-99c8-2dfe169cc450)
@@ -1927,6 +1947,31 @@
       (project "ultramote"
         (path "/d9165d03-bf8e-4912-9bca-224da4ea4a29/43fad132-fb74-49a6-968f-ee47e7e9e12e"
           (reference "J7") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:GNDA") (at 52.07 168.91 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid db55470b-08a8-469a-9847-0f04cd350df0)
+    (property "Reference" "#PWR028" (at 52.07 175.26 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GNDA" (at 52.07 173.99 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 52.07 168.91 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 52.07 168.91 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 246c06c7-68d9-4f11-9d52-289cc1a2c9db))
+    (instances
+      (project "ultramote"
+        (path "/d9165d03-bf8e-4912-9bca-224da4ea4a29/43fad132-fb74-49a6-968f-ee47e7e9e12e"
+          (reference "#PWR028") (unit 1)
         )
       )
     )
