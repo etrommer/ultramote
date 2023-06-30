@@ -38,3 +38,6 @@ gerber/*
 #ERC/DRC Outputs
 *-erc.txt
 *-drc.txt
+
+# KiBot Outputs
+generated/*
