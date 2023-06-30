@@ -31,7 +31,7 @@ void battery_monitor_update()
     if ((monitor_state == IDLE) && (current_tick - last_tick >= FREQUENCY - VDIV_PRECHARGE_TIME))
     {
         // Enable voltage divider
-        HAL_GPIO_WritePin(VDIV_ON_GPIO_Port, VDIV_ON_Pin, GPIO_PIN_SET);
+        HAL_GPIO_WritePin(BATTERY_DIVIDER_ON_GPIO_Port, BATTERY_DIVIDER_ON_Pin, GPIO_PIN_SET);
         monitor_state = PRECHARGE;
         last_tick = current_tick;
     }
@@ -57,5 +57,5 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
     // Read & Update The ADC Result
     uint32_t val = HAL_ADC_GetValue(hadc);
     adc_value = val;
-    HAL_GPIO_WritePin(VDIV_ON_GPIO_Port, VDIV_ON_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(BATTERY_DIVIDER_ON_GPIO_Port, BATTERY_DIVIDER_ON_Pin, GPIO_PIN_RESET);
 }

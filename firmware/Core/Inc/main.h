@@ -61,24 +61,23 @@ void Error_Handler(void);
 #define RTC_N_PREDIV_S 10
 #define RTC_PREDIV_S ((1<<RTC_N_PREDIV_S)-1)
 #define RTC_PREDIV_A ((1<<(15-RTC_N_PREDIV_S))-1)
+#define INPUT_SLEEVE_Pin GPIO_PIN_15
+#define INPUT_SLEEVE_GPIO_Port GPIOB
 #define LED_R_Pin GPIO_PIN_3
 #define LED_R_GPIO_Port GPIOB
-#define CHG_STATUS_Pin GPIO_PIN_4
-#define CHG_STATUS_GPIO_Port GPIOB
-#define VDIV_ON_Pin GPIO_PIN_7
-#define VDIV_ON_GPIO_Port GPIOB
-#define INPUT_SLEEVE_Pin GPIO_PIN_14
-#define INPUT_SLEEVE_GPIO_Port GPIOB
-#define INPUT_TIP_Pin GPIO_PIN_10
-#define INPUT_TIP_GPIO_Port GPIOA
+#define BATTERY_DIVIDER_ON_Pin GPIO_PIN_4
+#define BATTERY_DIVIDER_ON_GPIO_Port GPIOB
+#define INPUT_TIP_Pin GPIO_PIN_7
+#define INPUT_TIP_GPIO_Port GPIOB
+#define OUTPUT_SLEEVE_Pin GPIO_PIN_10
+#define OUTPUT_SLEEVE_GPIO_Port GPIOA
 #define LED_B_Pin GPIO_PIN_0
 #define LED_B_GPIO_Port GPIOA
 #define OUTPUT_TIP_Pin GPIO_PIN_13
 #define OUTPUT_TIP_GPIO_Port GPIOB
-#define OUTPUT_SLEEVE_Pin GPIO_PIN_9
-#define OUTPUT_SLEEVE_GPIO_Port GPIOA
 #define LED_G_Pin GPIO_PIN_10
 #define LED_G_GPIO_Port GPIOB
+
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
