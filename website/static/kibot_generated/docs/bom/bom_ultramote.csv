@@ -10,7 +10,7 @@ Row,Description,Part,References,Value,Footprint,Quantity Per PCB,Status,Datashee
 9,Ferrite bead,FerriteBead,FB1,MMZ1608B601CTAH0,C_0603_1608Metric,1, ,~,C97120,MMZ1608B601CTAH0
 10,"Audio Jack, 2 Poles (Mono / TS), Grounded Sleeve, Switched Pole (Normalling)",AudioJack2_Ground_Switch,J6 J7,PJ-242D-SMT,PJ-242D-SMT,2, ,https://datasheet.lcsc.com/lcsc/2110151630_XKB-Connectivity-PJ-242D-SMT_C381133.pdf,C381133,PJ-242D-SMT
 11,"Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)",Conn_01x02,J2,SM02B-SRSS-TB,JST_SH_SM02B-SRSS-TB_1x02-1MP_P1.00mm_Horizontal,1, ,https://datasheet.lcsc.com/lcsc/1811151533_JST-Sales-America-SM02B-SRSS-TB-LF-SN_C160402.pdf,C160402,S2B-PH-SM4-TB(LF)(SN)
-12,"coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, LEMO, ...)",Conn_Coaxial,J1,U.FL-R-SMT-1,U.FL_Hirose_U.FL-R-SMT-1_Vertical,1, ,https://datasheet.lcsc.com/lcsc/1811091710_HRS-Hirose-U-FL-R-SMT-1-80_C88374.pdf,C88374,U.FL-R-SMT-1(80)
+12,"coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, LEMO, ...)",Conn_Coaxial,J1,SMA-KWE902,SMA-KWE902,1, ,https://datasheet.lcsc.com/lcsc/2011081704_DreamLNK-SMA-KWE902_C914554.pdf,C914554,SMA-KE-P903
 13,USB 2.0-only Type-C Receptacle connector,USB_C_Receptacle_USB2.0,J3,USB-C-XKB_U262-16XN,USB_C_Receptacle_XKB_U262-16XN-4BVC11,1, ,https://datasheet.lcsc.com/lcsc/2103051833_Jing-Extension-of-the-Electronic-Co--918-418K2023S40001_C167321.pdf,C167321,918-418K2023S40001
 14,"Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)",Conn_01x04,J5,WST-REDFIT-4P,WR_WST-REDFIT-4P_DEBUG,1, ,https://www.we-online.com/components/products/datasheet/490107670412.pdf,,
 15,"0.115A Id, 60V Vds, N-Channel MOSFET, SOT-23",2N7002,Q1,2N7002,SOT-23,1, ,https://www.onsemi.com/pub/Collateral/NDS7002A-D.PDF,C916396,2N7002
@@ -37,7 +37,7 @@ Schematic:,ultramote
 Variant:,default
 Revision:,v0.2
 Date:,2022-05-03
-KiCad Version:,6.0.10+dfsg-1~bpo11+1
+KiCad Version:,7.0.5.1-1-g8f565ef7f0-dirty-deb11
 Statistics:
 Component Groups:,28
 Component Count:,53
