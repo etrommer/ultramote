@@ -2,7 +2,7 @@
 title = "List of blog posts"
 sort_by = "weight"
 +++
-Ultramote is a long-distance camera release system utilizing the LoRa radio protocol for remote triggering of cameras beyond the range of conventional wireless systems. It can achieve distance of up to several kilometers. Ultramote provides increased versatility for a variety of photography scenarios including wildlife, landscapes, and challenging environments.
+Ultramote is a long-distance camera shutter release system. Ultramote uses LoRa long-distance radio communication to achieve distances of up to several kilometers - well above the range of commercially-available 2.4GHz shutter release systems. Ultramote lets you put your camera in places where you _really_ don't want to be and allows you to capture shots from a safe distance.
 
 # Hardware
 ## Interface
