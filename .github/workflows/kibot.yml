@@ -1,7 +1,10 @@
 name: KiBot Export
 
 on:
+  workflow_dispatch:
   push:
+    branches:
+      - main
     paths:
       - 'pcb/*.kicad_sch'
       - 'pcb/*.kicad_pcb'
