@@ -8,6 +8,7 @@
 
 #define TIMER_MAX 1024
 
+// Internal handling structs
 typedef struct
 {
     uint32_t r;
@@ -22,8 +23,9 @@ typedef struct
     uint32_t fsm_counter;
 } led_control_state_t;
 
-// The currently selected pattern
+// The currently active pattern
 static led_pattern_t current_pattern = PATTERN_BREATHE;
+
 // Keeps track of currently selected color
 // is copied into the output state by the respective
 // pattern functions
@@ -34,10 +36,10 @@ static led_color_t current_color = {
 
 static led_control_state_t output_state = {
     // Running counter that is used to track progress in
-    // a pattern
+    // a pattern across invocations
     .fsm_counter = 0,
-    // Time until next invocation of pattern update function
-    // in 100th of a second
+    // Wait time until next invocation of pattern update function
+    // in 10ms increments
     .wait_cycles = 0,
     // next color to be output to LED
     .color = {
@@ -73,18 +75,22 @@ static void pattern_breathe(led_control_state_t *next_state)
     next_state->fsm_counter = (next_state->fsm_counter + 1) % total_states;
 }
 
-// Aircraft-like blink pattern (50ms on, 50ms off, 50ms on, 850ms off)
+// Aircraft-like blink pattern
+// 1. 50ms on
+// 2. 50ms off
+// 3. 50ms on
+// 4. 850ms off
 static void pattern_flash(led_control_state_t *next_state)
 {
     const uint32_t total_states = 4;
 
-    // Turn LED off, set default delay
+    // Set to default: 50ms Delay, LED off
     next_state->color.r = 0;
     next_state->color.g = 0;
     next_state->color.b = 0;
     next_state->wait_cycles = 5;
 
-    // Turn LED on for states 0 and 2
+    // Turn LED on in states 0 and 2
     if (next_state->fsm_counter == 0 || next_state->fsm_counter == 2)
     {
         next_state->color.r = current_color.r;
@@ -92,7 +98,7 @@ static void pattern_flash(led_control_state_t *next_state)
         next_state->color.b = current_color.b;
     }
 
-    // Extended delay for last state
+    // Extend delay for last state
     else if (next_state->fsm_counter == 3)
     {
         next_state->wait_cycles = 85;
@@ -100,7 +106,7 @@ static void pattern_flash(led_control_state_t *next_state)
     next_state->fsm_counter = (next_state->fsm_counter + 1) % total_states;
 }
 
-// Set single color
+// Set a single, constant color
 static void pattern_solid(led_control_state_t *next_state)
 {
     next_state->color.r = current_color.r;
@@ -134,11 +140,13 @@ void led_controller_set_color(uint32_t red, uint32_t green, uint32_t blue)
     current_color.r = red;
     current_color.g = green;
     current_color.b = blue;
+    // Set wait cycles to 0 so that the pattern update function is called with the new
+    // color immediately.
     output_state.wait_cycles = 0;
 }
 
-// Generate the next output and wait time based on the
-// currently selected pattern
+// Top-level function that is called after `current_state.wait_cycles` have passed
+// to update the LED output according to the current configuration
 static void update_pattern_fsm(led_control_state_t *next_state)
 {
     switch (current_pattern)
@@ -157,6 +165,7 @@ static void update_pattern_fsm(led_control_state_t *next_state)
 
 void led_controller_init()
 {
+    // Set up PWM timer for LED
     __HAL_TIM_SET_COMPARE(&htim2, CH_RED, 0);
     __HAL_TIM_SET_COMPARE(&htim2, CH_GREEN, 0);
     __HAL_TIM_SET_COMPARE(&htim2, CH_BLUE, 0);
@@ -165,6 +174,9 @@ void led_controller_init()
     HAL_TIM_PWM_Start(&htim2, CH_RED);
     HAL_TIM_PWM_Start(&htim2, CH_GREEN);
     HAL_TIM_PWM_Start(&htim2, CH_BLUE);
+
+    // Start Interrupt timer that calls the LED
+    // update ISR every 10ms
     HAL_TIM_Base_Start_IT(&htim17);
 }
 
@@ -174,7 +186,11 @@ void led_controller_update_state()
     if (output_state.wait_cycles == 0)
     {
         // Get next state
+        // This also updates the wait cycles to
+        // the next period that is required by the pattern.
         update_pattern_fsm(&output_state);
+
+        // Write new color values to LED PWM timers
         __HAL_TIM_SET_COMPARE(&htim2, CH_RED, output_state.color.r);
         __HAL_TIM_SET_COMPARE(&htim2, CH_GREEN, output_state.color.g);
         __HAL_TIM_SET_COMPARE(&htim2, CH_BLUE, output_state.color.b);
