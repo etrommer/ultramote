@@ -16,7 +16,7 @@ highlight_code = true
 
 [extra]
 juice_logo_name = "ultramote"
-juice_logo_path = "um_logo.svg"
+juice_logo_path = "um_logo.png"
 juice_extra_menu = [
     { title = "GitHub", link = "https://github.com/etrommer/ultramote" },
 ]
