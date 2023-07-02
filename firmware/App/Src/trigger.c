@@ -35,7 +35,7 @@ static bool update_debounce_integrator(GPIO_PinState raw_state, trigger_debounce
         filtered_state->state = TRIGGER_SET;
         filtered_state->integrator = INTEGRATOR_MAX;
     }
-    return filtered_state->state = old_state;
+    return filtered_state->state;
 }
 
 void trigger_update_input()
