@@ -2,7 +2,7 @@
 #include "radio.h"
 
 static PacketParams_t packetParams;
-const RadioLoRaBandwidths_t Bandwidths[] = {LORA_BW_125, LORA_BW_250, LORA_BW_500};
+// const RadioLoRaBandwidths_t Bandwidths[] = {LORA_BW_125, LORA_BW_250, LORA_BW_500};
 uint8_t rx_buffer[RADIO_RXTX_SIZE];
 uint8_t rx_buffer_len = 0;
 
@@ -68,7 +68,8 @@ void radio_init(void)
 
     ModulationParams_t modulationParams;
     modulationParams.PacketType = PACKET_TYPE_LORA;
-    modulationParams.Params.LoRa.Bandwidth = Bandwidths[LORA_BANDWIDTH];
+    // modulationParams.Params.LoRa.Bandwidth = Bandwidths[LORA_BANDWIDTH];
+    modulationParams.Params.LoRa.Bandwidth = (RadioLoRaBandwidths_t)LORA_BANDWIDTH;
     modulationParams.Params.LoRa.CodingRate = (RadioLoRaCodingRates_t)LORA_CODINGRATE;
     modulationParams.Params.LoRa.LowDatarateOptimize = 0x00;
     modulationParams.Params.LoRa.SpreadingFactor = (RadioLoRaSpreadingFactors_t)LORA_SPREADING_FACTOR;

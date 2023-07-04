@@ -2,10 +2,10 @@
 #include <stdint.h>
 #include "radio_driver.h"
 
-#define RF_FREQUENCY 433000000 /* Hz */
-#define TX_OUTPUT_POWER 17     /* dBm */
-#define LORA_BANDWIDTH 0       /* Hz */
-#define LORA_SPREADING_FACTOR 7
+#define RF_FREQUENCY 868000000     /* Hz */
+#define TX_OUTPUT_POWER 22         /* dBm */
+#define LORA_BANDWIDTH LORA_BW_125 /* Hz */
+#define LORA_SPREADING_FACTOR LORA_SF10
 #define LORA_CODINGRATE 1
 #define LORA_PREAMBLE_LENGTH 8 /* Same for Tx and Rx */
 #define LORA_SYMBOL_TIMEOUT 5  /* Symbols */
