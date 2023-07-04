@@ -27,7 +27,7 @@ CONSOLE_COMMAND_DEF(slc, "Set LED Color",
                     CONSOLE_INT_ARG_DEF(blue, "Blue Value <0-1024>"));
 
 CONSOLE_COMMAND_DEF(slp, "Set LED Pattern",
-                    CONSOLE_STR_ARG_DEF(pattern, "Pattern to show [solid, flash, breathe]"));
+                    CONSOLE_STR_ARG_DEF(pattern, "Pattern to show [solid, flash, breathe, quick]"));
 
 CONSOLE_COMMAND_DEF(trg, "Set State of output port",
                     CONSOLE_STR_ARG_DEF(channel, "Trigger Channel [S, T]"),
@@ -82,6 +82,10 @@ static void slp_command_handler(const slp_args_t *args)
     if (strncmp(args->pattern, "breathe", 7) == 0)
     {
         led_controller_set_pattern(PATTERN_BREATHE);
+    }
+    if (strncmp(args->pattern, "quick", 5) == 0)
+    {
+        led_controller_set_pattern(PATTERN_QUICK_BLINK);
     }
     if (strncmp(args->pattern, "flash", 5) == 0)
     {

@@ -106,6 +106,30 @@ static void pattern_flash(led_control_state_t *next_state)
     next_state->fsm_counter = (next_state->fsm_counter + 1) % total_states;
 }
 
+// Simple, quick blink pattern (100ms on, 100ms off)
+static void pattern_quick_blink(led_control_state_t *next_state)
+{
+    const uint32_t total_states = 2;
+
+    // Set to default: 50ms Delay, LED off
+    next_state->wait_cycles = 10;
+
+    // Turn LED on in states 0 and 2
+    if (next_state->fsm_counter == 0)
+    {
+        next_state->color.r = current_color.r;
+        next_state->color.g = current_color.g;
+        next_state->color.b = current_color.b;
+    }
+    else
+    {
+        next_state->color.r = 0;
+        next_state->color.g = 0;
+        next_state->color.b = 0;
+    }
+    next_state->fsm_counter = (next_state->fsm_counter + 1) % total_states;
+}
+
 // Set a single, constant color
 static void pattern_solid(led_control_state_t *next_state)
 {
@@ -118,9 +142,12 @@ static void pattern_solid(led_control_state_t *next_state)
 // Set a pattern
 void led_controller_set_pattern(led_pattern_t pattern)
 {
-    current_pattern = pattern;
-    output_state.fsm_counter = 0;
-    output_state.wait_cycles = 0;
+    if (pattern != current_pattern)
+    {
+        current_pattern = pattern;
+        output_state.fsm_counter = 0;
+        output_state.wait_cycles = 0;
+    }
 }
 
 void led_controller_set_color(uint32_t red, uint32_t green, uint32_t blue)
@@ -142,7 +169,7 @@ void led_controller_set_color(uint32_t red, uint32_t green, uint32_t blue)
     current_color.b = blue;
     // Set wait cycles to 0 so that the pattern update function is called with the new
     // color immediately.
-    output_state.wait_cycles = 0;
+    // output_state.wait_cycles = 0;
 }
 
 // Top-level function that is called after `current_state.wait_cycles` have passed
@@ -156,6 +183,9 @@ static void update_pattern_fsm(led_control_state_t *next_state)
         break;
     case PATTERN_BREATHE:
         pattern_breathe(next_state);
+        break;
+    case PATTERN_QUICK_BLINK:
+        pattern_quick_blink(next_state);
         break;
     default:
         pattern_solid(next_state);

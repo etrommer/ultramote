@@ -11,6 +11,7 @@ typedef enum
 typedef enum
 {
     PATTERN_FLASH,
+    PATTERN_QUICK_BLINK,
     PATTERN_BREATHE,
     PATTERN_SOLID
 } led_pattern_t;
