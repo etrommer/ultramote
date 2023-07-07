@@ -13,7 +13,7 @@ typedef struct
 } trigger_debounce_t;
 
 static const uint32_t INTEGRATOR_MAX = 3;
-static trigger_debounce_t sleeve_state = {0, TRIGGER_RESET};
+static trigger_debounce_t slv_state = {0, TRIGGER_RESET};
 static trigger_debounce_t tip_state = {0, TRIGGER_RESET};
 
 static bool update_debounce_integrator(GPIO_PinState raw_state, trigger_debounce_t *filtered_state)
@@ -33,43 +33,44 @@ static bool update_debounce_integrator(GPIO_PinState raw_state, trigger_debounce
 
     if (filtered_state->integrator == 0)
     {
-        filtered_state->state = TRIGGER_RESET;
+        filtered_state->state = TRIGGER_SET;
     }
     else if (filtered_state->integrator >= INTEGRATOR_MAX)
     {
-        filtered_state->state = TRIGGER_SET;
+        filtered_state->state = TRIGGER_RESET;
         filtered_state->integrator = INTEGRATOR_MAX;
     }
-    return filtered_state->state;
+    return filtered_state->state != old_state;
 }
 
 void trigger_update_input()
 {
-    GPIO_PinState sleeve_raw_state = HAL_GPIO_ReadPin(INPUT_SLEEVE_GPIO_Port, INPUT_SLEEVE_Pin);
+    GPIO_PinState slv_raw_state = HAL_GPIO_ReadPin(INPUT_SLEEVE_GPIO_Port, INPUT_SLEEVE_Pin);
     GPIO_PinState tip_raw_state = HAL_GPIO_ReadPin(INPUT_TIP_GPIO_Port, INPUT_TIP_Pin);
 
-    update_debounce_integrator(sleeve_raw_state, &sleeve_state);
-    update_debounce_integrator(tip_raw_state, &tip_state);
+    bool slv_changed = update_debounce_integrator(slv_raw_state, &slv_state);
+    bool tip_changed = update_debounce_integrator(tip_raw_state, &tip_state);
 
-    if (sleeve_state.state == TRIGGER_SET)
+#ifdef DEBUG_LOGGING
+    if (slv_changed)
     {
-        // led_controller_set_color(1023, 0, 0);
+        const char *event_str = slv_state.state == TRIGGER_SET ? "Press" : "Release";
+        LOG_DEBUG("SLV %s detected", event_str);
     }
-    else if (tip_state.state == TRIGGER_SET)
+
+    if (tip_changed)
     {
-        // led_controller_set_color(0, 1023, 0);
+        const char *event_str = tip_state.state == TRIGGER_SET ? "Press" : "Release";
+        LOG_DEBUG("TIP %s detected", event_str);
     }
-    else
-    {
-        // led_controller_set_color(0, 0, 1023);
-    }
+#endif
 }
 
 trigger_type_t trigger_read(trigger_channel_t channel)
 {
     if (channel == TRIGGER_CHANNEL_SLEEVE)
     {
-        return sleeve_state.state;
+        return slv_state.state;
     }
     if (channel == TRIGGER_CHANNEL_TIP)
     {
@@ -80,10 +81,13 @@ trigger_type_t trigger_read(trigger_channel_t channel)
 
 void trigger_set_output(trigger_channel_t channel, trigger_type_t type)
 {
-    GPIO_PinState state = GPIO_PIN_SET;
+    // MCU GPIO state and trigger state are inverted:
+    // Pin HIGH = switch open (Trigger reset)
+    // Pin LOW = switch closed (Trigger set)
+    GPIO_PinState state = GPIO_PIN_RESET;
     if (type == TRIGGER_RESET)
     {
-        state = GPIO_PIN_RESET;
+        state = GPIO_PIN_SET;
     }
 
     switch (channel)
