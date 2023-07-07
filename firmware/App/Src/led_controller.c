@@ -1,6 +1,6 @@
 #include "led_controller.h"
-#include "tim.h"
 #include "stdbool.h"
+#include "tim.h"
 
 #define CH_RED TIM_CHANNEL_2
 #define CH_BLUE TIM_CHANNEL_1
@@ -167,9 +167,6 @@ void led_controller_set_color(uint32_t red, uint32_t green, uint32_t blue)
     current_color.r = red;
     current_color.g = green;
     current_color.b = blue;
-    // Set wait cycles to 0 so that the pattern update function is called with the new
-    // color immediately.
-    // output_state.wait_cycles = 0;
 }
 
 // Top-level function that is called after `current_state.wait_cycles` have passed
@@ -204,10 +201,6 @@ void led_controller_init()
     HAL_TIM_PWM_Start(&htim2, CH_RED);
     HAL_TIM_PWM_Start(&htim2, CH_GREEN);
     HAL_TIM_PWM_Start(&htim2, CH_BLUE);
-
-    // Start Interrupt timer that calls the LED
-    // update ISR every 10ms
-    HAL_TIM_Base_Start_IT(&htim17);
 }
 
 void led_controller_update_state()
