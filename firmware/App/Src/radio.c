@@ -76,10 +76,10 @@ void radio_init(void)
     ModulationParams_t modulationParams;
     modulationParams.PacketType = PACKET_TYPE_LORA;
     // modulationParams.Params.LoRa.Bandwidth = Bandwidths[LORA_BANDWIDTH];
-    modulationParams.Params.LoRa.Bandwidth = (RadioLoRaBandwidths_t)LORA_BANDWIDTH;
-    modulationParams.Params.LoRa.CodingRate = (RadioLoRaCodingRates_t)LORA_CODINGRATE;
+    modulationParams.Params.LoRa.Bandwidth = LORA_BANDWIDTH;
+    modulationParams.Params.LoRa.CodingRate = LORA_CODINGRATE;
     modulationParams.Params.LoRa.LowDatarateOptimize = 0x00;
-    modulationParams.Params.LoRa.SpreadingFactor = (RadioLoRaSpreadingFactors_t)LORA_SPREADING_FACTOR;
+    modulationParams.Params.LoRa.SpreadingFactor = LORA_SPREADING_FACTOR;
     SUBGRF_SetModulationParams(&modulationParams);
 
     packetParams.PacketType = PACKET_TYPE_LORA;
