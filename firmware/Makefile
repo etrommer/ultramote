@@ -66,11 +66,13 @@ Core/Src/subghz.c \
 Core/Src/tim.c \
 Core/Src/usart.c \
 Core/Src/dma.c \
+App/Src/app.c \
 App/Src/bootloader.c \
 App/Src/console_impl.c \
 App/Src/console.c \
 App/Src/flash_backup.c \
 App/Src/led_controller.c \
+App/Src/logging_impl.c \
 App/Src/logging.c \
 App/Src/radio.c \
 App/Src/trigger.c \
@@ -129,7 +131,9 @@ AS_DEFS =
 C_DEFS =  \
 -DCORE_CM4 \
 -DUSE_HAL_DRIVER \
--DSTM32WLE5xx
+-DSTM32WLE5xx \
+-DECHO_DEVICE \
+-DDEBUG_LOGGING \
 
 
 # AS includes

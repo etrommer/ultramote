@@ -1,3 +1,8 @@
+#ifdef DEBUG_LOGGING
+#define FILENAME "radio"
+#include "logging.h"
+#endif
+
 #include <string.h>
 #include "radio.h"
 
@@ -17,7 +22,9 @@ static void handle_received(void)
     SUBGRF_GetPayload(rx_buffer, &rx_buffer_len, RADIO_RXTX_SIZE);
     SUBGRF_GetPacketStatus(&packetStatus);
 
-    // sprintf(uartBuff, "RssiValue=%d dBm, SnrValue=%d Hz\r\n", packetStatus.Params.LoRa.RssiPkt, packetStatus.Params.LoRa.SnrPkt);
+#ifdef DEBUG_LOGGING
+    LOG_DEBUG("Received %2d bytes with RSSI=%d dBm, SNR=%d Hz", rx_buffer_len, packetStatus.Params.LoRa.RssiPkt, packetStatus.Params.LoRa.SnrPkt);
+#endif
 }
 
 /**
@@ -102,6 +109,9 @@ void radio_send(uint8_t *buffer, uint32_t len)
     packetParams.Params.LoRa.PayloadLength = len;
     SUBGRF_SetPacketParams(&packetParams);
     SUBGRF_SendPayload(buffer, len, 0);
+#ifdef DEBUG_LOGGING
+    LOG_DEBUG("Sending %d bytes", len);
+#endif
 }
 
 void radio_receive(uint32_t timeout)
@@ -114,6 +124,9 @@ void radio_receive(uint32_t timeout)
     packetParams.Params.LoRa.PayloadLength = RADIO_RXTX_SIZE;
     SUBGRF_SetPacketParams(&packetParams);
     SUBGRF_SetRx(timeout << 6);
+#if DEBUG_LOGGING
+    LOG_DEBUG("Starting receive with timeout %d", timeout);
+#endif
 }
 
 bool radio_has_data(void)
@@ -125,5 +138,8 @@ void radio_get_data(uint8_t *buffer, uint32_t *len)
 {
     memcpy(buffer, rx_buffer, rx_buffer_len);
     *len = rx_buffer_len;
+#if DEBUG_LOGGING
+    LOG_DEBUG("Copied %d bytes to caller buffer", rx_buffer_len);
+#endif
     rx_buffer_len = 0;
 }

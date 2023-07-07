@@ -1,3 +1,8 @@
+#ifdef DEBUG_LOGGING
+#define FILENAME "battery_monitor"
+#include "logging.h"
+#endif
+
 #include "battery_monitor.h"
 #include "main.h"
 #include "gpio.h"

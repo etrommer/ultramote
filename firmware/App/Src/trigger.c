@@ -1,3 +1,8 @@
+#ifdef DEBUG_LOGGING
+#define FILENAME "trigger"
+#include "logging.h"
+#endif
+
 #include "trigger.h"
 #include "led_controller.h"
 
