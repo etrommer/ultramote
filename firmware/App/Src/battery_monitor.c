@@ -2,12 +2,12 @@
 #include "main.h"
 #include "gpio.h"
 #include "uart_buffer.h"
-#include <stdio.h>
 
 typedef enum
 {
     IDLE,
-    PRECHARGE
+    PRECHARGE,
+    MEASURE
 } battery_monitor_fsm_state_t;
 
 // Voltage divider values: 3V3 -> 10k -> ADC -> 22k -> GND
@@ -21,6 +21,7 @@ static const uint32_t FREQUENCY = 10000;
 static const uint32_t VDIV_PRECHARGE_TIME = 100;
 
 static volatile uint32_t adc_value = 0;
+
 static uint32_t last_tick = 0;
 static battery_monitor_fsm_state_t monitor_state = IDLE;
 
@@ -39,7 +40,7 @@ void battery_monitor_update()
     {
         // Start measurement
         HAL_ADC_Start_IT(&hadc);
-        monitor_state = IDLE;
+        monitor_state = MEASURE;
         last_tick = current_tick;
     }
 }
@@ -58,4 +59,5 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
     uint32_t val = HAL_ADC_GetValue(hadc);
     adc_value = val;
     HAL_GPIO_WritePin(BATTERY_DIVIDER_ON_GPIO_Port, BATTERY_DIVIDER_ON_Pin, GPIO_PIN_RESET);
+    monitor_state = IDLE;
 }
