@@ -2,11 +2,12 @@
 #include <stdint.h>
 #include "radio_driver.h"
 
+// Air time: 95.23 ms
 #define RF_FREQUENCY 868000000     /* Hz */
-#define TX_OUTPUT_POWER 22         /* dBm */
+#define TX_OUTPUT_POWER 17         /* dBm */
 #define LORA_BANDWIDTH LORA_BW_125 /* Hz */
-#define LORA_SPREADING_FACTOR LORA_SF10
-#define LORA_CODINGRATE 1
+#define LORA_SPREADING_FACTOR LORA_SF9
+#define LORA_CODINGRATE LORA_CR_4_5
 #define LORA_PREAMBLE_LENGTH 8 /* Same for Tx and Rx */
 #define LORA_SYMBOL_TIMEOUT 5  /* Symbols */
 
