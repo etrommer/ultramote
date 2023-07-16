@@ -2,7 +2,7 @@
 title = "List of blog posts"
 sort_by = "weight"
 +++
-Ultramote is a long-distance camera shutter release system. Ultramote uses LoRa long-distance radio communication to achieve distances of up to several kilometers - well above the range of commercially-available 2.4GHz shutter release systems. Ultramote lets you put your camera in places where you _really_ don't want to be and allows you to capture shots from a safe distance.
+Ultramote is a long-distance remote trigger system. It is built for photography first, but easily supports all kinds of equipment. Ultramote uses LoRa long-distance radio communication to achieve distances of hunreds of meters, even in urban environments - well above the range of commercially-available 2.4GHz triggering systems. Ultramote lets you put a camera in places where you _really_ don't want to be and allows you to capture shots from a safe distance.
 
 # Hardware
 ## Interface
@@ -16,15 +16,18 @@ Firmware updates can also be carried out over USB-C.
 A 400mAh LiPo battery allows for an idle time of several hours. The battery is charged over USB-C.
 
 ## Enclosure
-_currently work in progress_  
+_work in progress_  
 The Ultramote's enclosure is 3D-printed in two parts and comes with hotshoe and GoPro-style attachement points as well as a 1/4" thread.
+
+## Extendable
+Ultramote is ready to connect to Sparkfun's [QWIIC](https://www.sparkfun.com/qwiic) sensors. This makes it a versatile platform that can support all sorts of sophisticated applications. Want to trigger a remote device depending on temperature, incident light, air pressure, sound, an ultrasonic distance measurement, etc? Integrate your QWIIC sensor into the firmware, flash it using USB and you are good to go!
 
 
 ## Documentation
 ![Rendering Top](kibot_generated/docs/img/ultramote-top.png)
 ![Rendering Bottom](kibot_generated/docs/img/ultramote-bottom.png)
 
-Documentation is built using [KiBot](https://github.com/INTI-CMNB/KiBot) and automatically updated from the repositorie's main branch::wireless
+Documentation is built using [KiBot](https://github.com/INTI-CMNB/KiBot) and automatically updated from the repository's main branch
 - [Schematic (PDF)](kibot_generated/docs/ultramote-schematic.pdf)
 - [Board Layot (PDF)](kibot_generated/docs/ultramote-pcb-layers.pdf)
 - [BoM (CSV)](kibot_generated/docs/bom/bom_ultramote.csv)
