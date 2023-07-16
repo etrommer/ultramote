@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ultramote - LoRa remote trigger system</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+    :root {
+        /* Primary theme color */
+        --primary-color: #3aafa9;
+        /* Primary theme text color */
+        --primary-text-color: #17252a;
+        /* Primary theme link color */
+        --primary-link-color: #3aafa9;
+        /* Secondary color: the background body color */
+        --secondary-color: #feffff;
+        --secondary-text-color: #2b7a78;
+        /* Highlight text color of table of content */
+        --toc-highlight-text-color: #17252a;
+    }
+</style>
+
+    <link href="https://etrommer.github.io/ultramote/fonts/kanit.css" rel="stylesheet">
+    <link href="https://etrommer.github.io/ultramote/fonts/fira_sans.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://etrommer.github.io/ultramote/normalize.css">
+    <link rel="stylesheet" href="https://etrommer.github.io/ultramote/juice.css">
+    <link rel="icon" href="https://etrommer.github.io/ultramote/favicon.svg">
+    
+    
+</head>
+
+<body>
+    
+    <header class="box-shadow">
+        <div class="header-content">
+            
+
+<a href="https:&#x2F;&#x2F;etrommer.github.io&#x2F;ultramote&#x2F;">
+    <div class="logo">
+        <img src="https://etrommer.github.io/ultramote/um_logo.png" alt="logo">
+        ultramote
+    </div>
+</a>
+
+<nav>
+    
+    
+    
+        
+        <a class="nav-item subtitle-text" href="https:&#x2F;&#x2F;github.com&#x2F;etrommer&#x2F;ultramote">GitHub</a>
+        
+    
+</nav>
+
+        </div>
+    </header>
+    
+
+    <main>
+        
+        
+        
+        
+        
+        <div class="toc">
+            <div class="toc-sticky">
+                
+                <div class="toc-item">
+                    <a class="subtext" href="https://etrommer.github.io/ultramote/#hardware">Hardware</a>
+                </div>
+                
+                
+                <div class="toc-item-child">
+                    <a class="subtext" href="https://etrommer.github.io/ultramote/#interface"><small>- Interface</small></a>
+                </div>
+                
+                <div class="toc-item-child">
+                    <a class="subtext" href="https://etrommer.github.io/ultramote/#battery"><small>- Battery</small></a>
+                </div>
+                
+                <div class="toc-item-child">
+                    <a class="subtext" href="https://etrommer.github.io/ultramote/#enclosure"><small>- Enclosure</small></a>
+                </div>
+                
+                <div class="toc-item-child">
+                    <a class="subtext" href="https://etrommer.github.io/ultramote/#extendable"><small>- Extendable</small></a>
+                </div>
+                
+                <div class="toc-item-child">
+                    <a class="subtext" href="https://etrommer.github.io/ultramote/#documentation"><small>- Documentation</small></a>
+                </div>
+                
+                
+                
+                <div class="toc-item">
+                    <a class="subtext" href="https://etrommer.github.io/ultramote/#firmware">Firmware</a>
+                </div>
+                
+                
+                <div class="toc-item">
+                    <a class="subtext" href="https://etrommer.github.io/ultramote/#license">License</a>
+                </div>
+                
+                
+            </div>
+        </div>
+        
+        
+
+        <div class="content text">
+            
+            <div id="features" class="heading-text">Overview</div>
+            <p>Ultramote is a long-distance remote trigger system. It is built for photography first, but easily supports all kinds of equipment. Ultramote uses LoRa long-distance radio communication to achieve distances of hunreds of meters, even in urban environments - well above the range of commercially-available 2.4GHz triggering systems. Ultramote lets you put a camera in places where you <em>really</em> don't want to be and allows you to capture shots from a safe distance.</p>
+<h1 id="hardware">Hardware</h1>
+<h2 id="interface">Interface</h2>
+<p>Ultramote has two 2.5mm jacks for input and output. Each input/output has two independent channels (tip and sleeve). Output connectors are optically isolated from the Ultramote's electronics, inputs are equipped with high-voltage protection circuitry. Any regular remote shutter or time lapse controller can be connected and is relayed to all Ultramotes listening on the same channel. For camera output, an adapter cable from a 2.5mm jack to the camera's remote port is required.</p>
+<p>Ultramote can be connected to a PC via USB-C and controlled via a Serial Terminal.</p>
+<p>Firmware updates can also be carried out over USB-C.</p>
+<h2 id="battery">Battery</h2>
+<p>A 400mAh LiPo battery allows for an idle time of several hours. The battery is charged over USB-C.</p>
+<h2 id="enclosure">Enclosure</h2>
+<p><em>work in progress</em><br />
+The Ultramote's enclosure is 3D-printed in two parts and comes with hotshoe and GoPro-style attachement points as well as a 1/4&quot; thread.</p>
+<h2 id="extendable">Extendable</h2>
+<p>Ultramote is ready to connect to Sparkfun's <a href="https://www.sparkfun.com/qwiic">QWIIC</a> sensors. This makes it a versatile platform that can support all sorts of sophisticated applications. Want to trigger a remote device depending on temperature, incident light, air pressure, sound, an ultrasonic distance measurement, etc? Integrate your QWIIC sensor into the firmware, flash it using USB and you are good to go!</p>
+<h2 id="documentation">Documentation</h2>
+<p><img src="https://etrommer.github.io/ultramote/kibot_generated/docs/img/ultramote-top.png" alt="Rendering Top" />
+<img src="https://etrommer.github.io/ultramote/kibot_generated/docs/img/ultramote-bottom.png" alt="Rendering Bottom" /></p>
+<p>Documentation is built using <a href="https://github.com/INTI-CMNB/KiBot">KiBot</a> and automatically updated from the repository's main branch</p>
+<ul>
+<li><a href="kibot_generated/docs/ultramote-schematic.pdf">Schematic (PDF)</a></li>
+<li><a href="kibot_generated/docs/ultramote-pcb-layers.pdf">Board Layot (PDF)</a></li>
+<li><a href="kibot_generated/docs/bom/bom_ultramote.csv">BoM (CSV)</a></li>
+<li><a href="kibot_generated/docs/bom/ultramote-ibom.html">Interactive BoM</a> (generated using the <a href="https://github.com/openscopeproject/InteractiveHtmlBom">KiCAD IBoM Plugin</a>)</li>
+<li><a href="kibot_generated/ultramote.step">CAD File (STEP)</a></li>
+</ul>
+<h1 id="firmware">Firmware</h1>
+<p>The firmware currently supports these features:</p>
+<ul>
+<li>Pass on trigger events to other devices listening on the same channel</li>
+<li>Report battery voltage</li>
+<li>Command-line interface over USB/Serial. Over the interface, users can:
+<ul>
+<li>Put the device in bootloader mode to flash firmware over USB. This allows users to easily update their device or develop their own firmware.</li>
+<li>Reprogram the device to a different channel. Useful when triggering more than one camera.</li>
+<li>Select LED modes, set the state of the output, inspect device state, etc.</li>
+</ul>
+</li>
+</ul>
+<p>There is a long list of potential features that <em>might</em> be added at a later point in time.</p>
+<h1 id="license">License</h1>
+<p>Ultramote Hardware and Software are licensed under the <a href="https://github.com/etrommer/ultramote/tree/main/LICENSE">GNU General Public License v3.0</a></p>
+
+            
+        </div>
+
+    </main>
+
+    
+    <footer>
+        <small class="subtext">
+            ©2023 <a href="https://etrommer.de">Elias Trommer</a>
+        </small>
+    </footer>
+    
+</body>
+<script>
+    function highlightNav(heading) {
+        let pathname = location.pathname;
+        document.querySelectorAll(".toc a").forEach((item) => {
+            item.classList.remove("active");
+            if (item.href.endsWith(heading)) {
+                item.classList.add("active");
+            }
+        });
+    }
+
+    let currentHeading = "";
+    window.onscroll = function () {
+        let h = document.querySelectorAll("h1,h2,h3,h4,h5,h6");
+        let elementArr = [];
+
+        h.forEach(item => {
+            if (item.id !== "") {
+                elementArr[item.id] = item.getBoundingClientRect().top;
+            }
+        });
+        elementArr.sort();
+        for (let key in elementArr) {
+            if (!elementArr.hasOwnProperty(key)) {
+                continue;
+            }
+            if (elementArr[key] > 0 && elementArr[key] < 300) {
+                if (currentHeading !== key) {
+                    highlightNav(key);
+                    currentHeading = key;
+                }
+                break;
+            }
+        }
+    }
+</script>
+
+</html>
