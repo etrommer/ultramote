@@ -20,4 +20,9 @@
   (pad "2" thru_hole circle (at -2.54 2.54) (size 2 2) (drill 1.5) (layers "*.Cu" "*.Mask") (tstamp 1f5f76eb-03c5-4830-81e4-572e29cecaa6))
   (pad "2" thru_hole circle (at 2.54 -2.54) (size 2 2) (drill 1.5) (layers "*.Cu" "*.Mask") (tstamp 9d03b3ba-5b28-478a-ab6d-d9608015f857))
   (pad "2" thru_hole circle (at 2.54 2.54) (size 2 2) (drill 1.5) (layers "*.Cu" "*.Mask") (tstamp de68c1f4-1bad-4bbf-b573-1d8673c85669))
+  (model "${KIPRJMOD}/cad_models/SMA ANGLED.STEP"
+    (offset (xyz 0 0 -3.85))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
 )
