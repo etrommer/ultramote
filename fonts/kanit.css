@@ -1,0 +1,27 @@
+/* kanit-500 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  src: url('kanit-v12-latin-500.woff') format('woff');
+}
+
+/* kanit-600 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 600;
+  src: url('kanit-v12-latin-600.woff') format('woff');
+}
+
+/* kanit-800 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 800;
+  src: url('kanit-v12-latin-800.woff') format('woff');
+}
+
