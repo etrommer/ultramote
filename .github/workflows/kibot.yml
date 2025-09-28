@@ -20,7 +20,7 @@ on:
 jobs:
   KiBot:
     runs-on: ubuntu-latest
-    container: ghcr.io/inti-cmnb/kicad6_auto_full:dev
+    container: ghcr.io/inti-cmnb/kicad8_auto_full:latest
     steps:
     - uses: actions/checkout@v3
     - name: Cache 3D Models
@@ -30,7 +30,7 @@ jobs:
         path: ~/cache_3d
         key: cache_3d
     - name: Run KiBot
-      uses: INTI-CMNB/KiBot@v2_k7
+      uses: INTI-CMNB/KiBot@v2_k8
       with:
         config: pcb/config.kibot.yaml
         skip: all
