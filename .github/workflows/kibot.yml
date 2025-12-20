@@ -6,42 +6,42 @@ on:
     branches:
       - main
     paths:
-      - 'pcb/*.kicad_sch'
-      - 'pcb/*.kicad_pcb'
-      - 'pcb/*.kibot.yaml'
-      - '.github/workflows/kibot.yml'
+      - "pcb/*.kicad_sch"
+      - "pcb/*.kicad_pcb"
+      - "pcb/*.kibot.yaml"
+      - ".github/workflows/kibot.yml"
   pull_request:
     paths:
-      - 'pcb/**.kicad_sch'
-      - 'pcb/**.kicad_pcb'
-      - 'pcb/**.kibot.yaml'
-      - '.github/workflows/kibot.yml'
+      - "pcb/**.kicad_sch"
+      - "pcb/**.kicad_pcb"
+      - "pcb/**.kibot.yaml"
+      - ".github/workflows/kibot.yml"
 
 jobs:
   KiBot:
     runs-on: ubuntu-latest
-    container: ghcr.io/inti-cmnb/kicad8_auto_full:latest
+    container: ghcr.io/inti-cmnb/kicad9_auto_full:latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Cache 3D Models
-      id: models-cache
-      uses: set-soft/cache@main
-      with:
-        path: ~/cache_3d
-        key: cache_3d
-    - name: Run KiBot
-      uses: INTI-CMNB/KiBot@v2_k8
-      with:
-        config: pcb/config.kibot.yaml
-        skip: all
-        schema: 'pcb/ultramote.kicad_sch'
-        board: 'pcb/ultramote.kicad_pcb'
-        dir: website/static/kibot_generated
-        cache3D: YES
-        targets: ibom.html bom.csv board.pdf schematic.pdf model.step top_render bottom_render
-    - name: Commit updated documentation
-      uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        file_pattern: website/static/kibot_generated/*
-        commit_message: "CI: Update documentation"
-        skip_dirty_check: true
+      - uses: actions/checkout@v3
+      - name: Cache 3D Models
+        id: models-cache
+        uses: set-soft/cache@main
+        with:
+          path: ~/cache_3d
+          key: cache_3d
+      - name: Run KiBot
+        uses: INTI-CMNB/KiBot@v2_k9
+        with:
+          config: pcb/config.kibot.yaml
+          skip: all
+          schema: "pcb/ultramote.kicad_sch"
+          board: "pcb/ultramote.kicad_pcb"
+          dir: website/static/kibot_generated
+          cache3D: YES
+          targets: ibom.html bom.csv board.pdf schematic.pdf model.step top_render bottom_render
+      - name: Commit updated documentation
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          file_pattern: website/static/kibot_generated/*
+          commit_message: "CI: Update documentation"
+          skip_dirty_check: true
