@@ -1,4 +1,5 @@
 #include <string.h>
+#include <stdio.h>
 
 #include "console_impl.h"
 #include "console.h"
@@ -12,8 +13,8 @@
 #define INPUT_BUFFER_SIZE 16
 #define OUTPUT_BUFFER_SIZE 128
 
-static uint8_t input_buffer[INPUT_BUFFER_SIZE];
-static uint8_t output_buffer[OUTPUT_BUFFER_SIZE];
+static char input_buffer[INPUT_BUFFER_SIZE];
+static char output_buffer[OUTPUT_BUFFER_SIZE];
 
 CONSOLE_COMMAND_DEF(status, "Print System Status");
 CONSOLE_COMMAND_DEF(bl, "Enter Bootloader");
@@ -36,7 +37,6 @@ CONSOLE_COMMAND_DEF(trg, "Set State of output port",
 static void status_command_handler(const status_args_t *args)
 {
     // TODO: Read channel
-    // TODO: Read charge state
     snprintf(output_buffer, OUTPUT_BUFFER_SIZE, "Firmware Version: %d.%d.%d\n", FW_VERSION_MAJOR, FW_VERSION_MINOR, FW_VERSION_PATCH);
     uart_write(output_buffer);
 
@@ -49,6 +49,10 @@ static void status_command_handler(const status_args_t *args)
 
     trigger_type_t in2 = trigger_read(TRIGGER_CHANNEL_TIP);
     snprintf(output_buffer, OUTPUT_BUFFER_SIZE, "Input Ch. 2 (Tip): %s\n", in2 == TRIGGER_SET ? "High" : "Low");
+    uart_write(output_buffer);
+
+    uint32_t charge_x10 = battery_monitor_percentage_x10();
+    snprintf(output_buffer, OUTPUT_BUFFER_SIZE, "Battery Charge: %d.%d%%\n", charge_x10 / 10, charge_x10 % 10);
     uart_write(output_buffer);
 }
 

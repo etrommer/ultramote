@@ -15,6 +15,8 @@ typedef enum
     MEASURE
 } battery_monitor_fsm_state_t;
 
+#define LIPO_VOLTAGE_NUM_POINTS 11
+
 // Voltage divider values: 3V3 -> 10k -> ADC -> 22k -> GND
 static const uint32_t VDIV_R_UPPER = 10;
 static const uint32_t VDIV_R_LOWER = 22;
@@ -48,6 +50,55 @@ void battery_monitor_update()
         monitor_state = MEASURE;
         last_tick = current_tick;
     }
+}
+
+uint32_t battery_monitor_percentage_x10()
+{
+    uint32_t voltage_mv = battery_monitor_mv_value();
+    // Voltage-to-percentage lookup table (voltage in mV, charge in tenths of %)
+    // Based on typical LiPo discharge curve for a single cell
+    const uint16_t lipo_voltage_lut[LIPO_VOLTAGE_NUM_POINTS] = {
+        4200, // 100% - Fully charged
+        4150, // 90%
+        4110, // 80%
+        4080, // 70%
+        4020, // 60%
+        3980, // 50%
+        3950, // 40%
+        3870, // 30%
+        3830, // 20%
+        3790, // 10%
+        3500  // 0% - Cutoff voltage
+    };
+    // Clamp to valid range
+    if (voltage_mv >= lipo_voltage_lut[0])
+    {
+        return 1000;
+    }
+    if (voltage_mv <= lipo_voltage_lut[LIPO_VOLTAGE_NUM_POINTS - 1])
+    {
+        return 0;
+    }
+
+    // Find the two points to interpolate between
+    for (uint8_t i = 0; i < LIPO_VOLTAGE_NUM_POINTS - 1; i++)
+    {
+        if (voltage_mv <= lipo_voltage_lut[i] && voltage_mv >= lipo_voltage_lut[i + 1])
+        {
+            // Linear interpolation using fixed-point math
+            // charge = c1 + (voltage_mv - v1) * (c2 - c1) / (v2 - v1)
+            // Charge decreases by 100 (10%) for each step: c1 = 1000 - i*100, c2 = 1000 - (i+1)*100
+            uint16_t v1 = lipo_voltage_lut[i];
+            uint16_t v2 = lipo_voltage_lut[i + 1];
+            uint16_t c1 = 1000 - (i * 100);
+            uint16_t c2 = 1000 - ((i + 1) * 100);
+
+            int16_t charge_x10 = c1 + ((int32_t)(voltage_mv - v1) * (int16_t)(c2 - c1)) / (int16_t)(v2 - v1);
+            return (uint16_t)charge_x10;
+        }
+    }
+
+    return 0; // Should never reach here
 }
 
 uint32_t battery_monitor_mv_value()
