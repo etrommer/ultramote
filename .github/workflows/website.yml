@@ -1,0 +1,116 @@
+name: Website
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "pcb/*.kicad_sch"
+      - "pcb/*.kicad_pcb"
+      - "pcb/cad_models/**"
+      - "pcb/Makefile"
+      - "website/**"
+      - ".github/workflows/website.yml"
+  pull_request:
+    paths:
+      - "pcb/*.kicad_sch"
+      - "pcb/*.kicad_pcb"
+      - "pcb/cad_models/**"
+      - "pcb/Makefile"
+      - "website/**"
+      - ".github/workflows/website.yml"
+
+permissions:
+  contents: read
+
+# GitHub Pages deployments must not be cancelled halfway through.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  assets:
+    name: Build PCB assets
+    runs-on: ubuntu-latest
+    container:
+      image: kicad/kicad:10.0-full
+      # The image ships KiCad and its 3D models but no build tools, so the
+      # package install below needs root.
+      options: --user root
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install build tools
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends make libarchive-tools \
+            python3-venv python3-pip xvfb libgl1 libglx-mesa0 libgl1-mesa-dri \
+            libegl1 libegl-mesa0
+      - name: Install InteractiveHtmlBom
+        run: |
+          python3 -m venv --system-site-packages /opt/ibom
+          /opt/ibom/bin/pip install interactivehtmlbom
+      - name: Build assets
+        # xvfb provides the display that the interactive BoM and the 3D
+        # renderer want.
+        run: |
+          xvfb-run -a make -C pcb OUT=../website/static/pcb_assets \
+            IBOM=/opt/ibom/bin/generate_interactive_bom
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pcb-assets
+          path: website/static/pcb_assets
+          if-no-files-found: error
+          retention-days: 7
+
+  publish:
+    name: Publish site
+    needs: assets
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # website/themes/juice is a submodule.
+          submodules: true
+      - uses: actions/download-artifact@v4
+        with:
+          name: pcb-assets
+          path: website/static/pcb_assets
+      # The assets are never committed; refuse to publish a site whose
+      # documentation links would dangle.
+      - name: Check documentation links
+        run: |
+          set -euo pipefail
+          missing=0
+          while read -r path; do
+            if [ ! -f "website/static/$path" ]; then
+              echo "::error::missing documentation asset: $path"
+              missing=1
+            fi
+          done < <(grep -oE '\]\(pcb_assets/[^)]*\)' website/content/_index.md | tr -d ']()')
+          exit $missing
+      # 0.22 is the last release that can build this site: 0.23 switched to
+      # Tera v2, which dropped the `{% macro %}`/`{% import %}` tags used by
+      # website/templates and by the juice theme.
+      - name: Install zola
+        run: |
+          set -euo pipefail
+          curl -sSfL -o /tmp/zola.tar.gz \
+            https://github.com/getzola/zola/releases/download/v0.22.1/zola-v0.22.1-x86_64-unknown-linux-gnu.tar.gz
+          echo "0ca09aa40376aaa9ddfb512ff9ad963262ef95edb0d0f2d5ec6961b6f5cf22ef  /tmp/zola.tar.gz" | sha256sum -c -
+          sudo tar -xzf /tmp/zola.tar.gz -C /usr/local/bin zola
+      - name: Build site
+        run: zola --root website build
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: website/public
+      - id: deploy
+        uses: actions/deploy-pages@v5
