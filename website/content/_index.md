@@ -24,15 +24,15 @@ Ultramote is ready to connect to Sparkfun's [QWIIC](https://www.sparkfun.com/qwi
 
 
 ## Documentation
-![Rendering Top](kibot_generated/docs/img/ultramote-top.png)
-![Rendering Bottom](kibot_generated/docs/img/ultramote-bottom.png)
+![Rendering Top](pcb_assets/docs/img/ultramote-top.png)
+![Rendering Bottom](pcb_assets/docs/img/ultramote-bottom.png)
 
-Documentation is built using [KiBot](https://github.com/INTI-CMNB/KiBot) and automatically updated from the repository's main branch
-- [Schematic (PDF)](kibot_generated/docs/ultramote-schematic.pdf)
-- [Board Layot (PDF)](kibot_generated/docs/ultramote-pcb-layers.pdf)
-- [BoM (CSV)](kibot_generated/docs/bom/bom_ultramote.csv)
-- [Interactive BoM](kibot_generated/docs/bom/ultramote-ibom.html) (generated using the [KiCAD IBoM Plugin](https://github.com/openscopeproject/InteractiveHtmlBom))
-- [CAD File (STEP)](kibot_generated/ultramote.step)
+Documentation is built from the KiCad sources by the `pcb/Makefile` and automatically updated from the repository's main branch
+- [Schematic (PDF)](pcb_assets/docs/ultramote-schematic.pdf)
+- [Board Layout (PDF)](pcb_assets/docs/ultramote-pcb-layers.pdf)
+- [BoM (CSV)](pcb_assets/docs/bom/bom_ultramote.csv)
+- [Interactive BoM](pcb_assets/docs/bom/ultramote-ibom.html) (generated using the [KiCAD IBoM Plugin](https://github.com/openscopeproject/InteractiveHtmlBom))
+- [CAD File (STEP)](pcb_assets/ultramote.step)
 
 # Firmware
 The firmware currently supports these features:

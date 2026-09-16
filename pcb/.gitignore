@@ -39,5 +39,5 @@ gerber/*
 *-erc.txt
 *-drc.txt
 
-# KiBot Outputs
+# Generated assets
 generated/*
