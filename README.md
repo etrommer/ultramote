@@ -86,7 +86,10 @@ longer supports the macros used by the site templates and the `juice` theme.
 
 The interactive BoM needs the
 [InteractiveHtmlBom](https://github.com/openscopeproject/InteractiveHtmlBom)
-CLI, which must see KiCad's Python bindings:
+CLI, which must see KiCad's Python bindings. `make` uses one from `PATH` if there
+is one, otherwise the copy that ships with the plugin installed through KiCad's
+Plugin and Content Manager, so a plugin installation needs no extra setup. Point
+`IBOM=` at a CLI from elsewhere (CI installs one from PyPI):
 
 ```bash
 python3 -m venv --system-site-packages ~/.local/venv/ibom

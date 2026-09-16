@@ -9,15 +9,23 @@
 #   make clean           delete the output directory
 #   make OUT=<dir>       write the assets elsewhere (default: generated)
 #
-# Needs kicad-cli (KiCad 10) and bsdtar. The interactive BoM needs the
-# InteractiveHtmlBom CLI on PATH; point IBOM= at it if it lives elsewhere.
+# Needs kicad-cli (KiCad 10) and bsdtar. The interactive BoM uses the
+# InteractiveHtmlBom CLI from PATH, or the one that ships with the KiCad plugin
+# installation; point IBOM= at a different one if needed.
 #
 # CI builds into website/static/pcb_assets, which it publishes with the site
 # without committing it (see .github/workflows/website.yml).
 
 KICAD_CLI ?= kicad-cli
 TAR       ?= bsdtar
-IBOM      ?= generate_interactive_bom
+
+# The interactive BoM has no kicad-cli equivalent. Use an InteractiveHtmlBom CLI
+# from PATH, else the one bundled with the KiCad plugin whose name sorts last
+# (i.e. the newest KiCad version), else leave the bare name for the error.
+IBOM_PLUGIN := $(lastword $(sort $(wildcard \
+	$(HOME)/.local/share/kicad/*/3rdparty/plugins/*/generate_interactive_bom.py \
+	$(HOME)/.local/share/kicad/scripting/plugins/*/generate_interactive_bom.py)))
+IBOM      ?= $(or $(shell command -v generate_interactive_bom 2>/dev/null),$(IBOM_PLUGIN),generate_interactive_bom)
 
 PCB   := ultramote
 SCH   := $(PCB).kicad_sch
